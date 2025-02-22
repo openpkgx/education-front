@@ -12,6 +12,7 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import SourceOutlinedIcon from '@mui/icons-material/SourceOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 
 const MenusRoutes: MenuItem[] = [
   {
@@ -40,6 +41,13 @@ const MenusRoutes: MenuItem[] = [
     name: "学习资料",
     href: "/school/student/materials",
     icon: SourceOutlinedIcon,
+    children: [],
+  },
+  {
+    id: "8",
+    name: "AI助手",
+    href: "/school/student/chatai",
+    icon: SmartToyOutlinedIcon,
     children: [],
   },
 ]

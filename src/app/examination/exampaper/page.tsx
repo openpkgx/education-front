@@ -10,6 +10,7 @@ import { AnswerExamPaperQuestion, GetExamPapersDetails } from '@/api/exam-paper-
 import QuestionOptionsCard from './question-options-card';
 import { addFavorite } from '@/api/favorite-api';
 import { useNotification } from '@/components/notification';
+import ChatBox from '@/app/school/student/chatai/chat-box';
 
 type QuestionMap = {
     [key: string]: Question;
@@ -199,22 +200,27 @@ export default function Page() {
     };
 
     return (
-        <div className="flex h-screen w-full flex-row overflow-hidden">
+        <div className="flex w-full flex-row overflow-hidden pt-4">
             <div className="flex-none w-72 m-2 h-full">
                 <QuestionOptionsCard examPaper={examPaper} questions={examPaper.questions} currentQuestionIndex={currentQuestionIndex} onSelected={handleQuestionSelected}></QuestionOptionsCard>
             </div>
-            <div className="flex flex-col w-full overflow-y-auto p-2">
+            <div className="flex flex-col w-full p-2">
                 <TopSidebar text={examPaper.name}></TopSidebar>
-                <div className="flex flex-col overflow-y-auto w-full  h-screen mt-2 border-gray-50 shadow-[0_0_8px_rgba(0,0,0,0.25)]">
-                    <div className='w-full'>
-                        <QuestionPage
-                            currentQuestionIndex={currentQuestionIndex}
-                            questionDetails={currentQuestionDetails}
-                            questionAnswer={currentQuestionAnswer}
-                            questionOptionChange={handleQuestionOptionChange}
-                            onFavorite={hadnleOnFavorite} />
+                <div className="flex flex-col w-full h-screen mt-2 overflow-y-auto border-gray-50 shadow-[0_0_8px_rgba(0,0,0,0.25)]">
+                    <div className='flex flex-row h-full w-full gap-4 justify-between'>
+                        <div className='max-w-[1000px]'>
+                            <QuestionPage
+                                currentQuestionIndex={currentQuestionIndex}
+                                questionDetails={currentQuestionDetails}
+                                questionAnswer={currentQuestionAnswer}
+                                questionOptionChange={handleQuestionOptionChange}
+                                onFavorite={hadnleOnFavorite} />
+                        </div>
+                        <div className='max-w-[500px]  h-[calc(100%-100px)] mt-6'>
+                            <ChatBox></ChatBox>
+                        </div>
                     </div>
-                    <div className='justify-end mt-auto w-full'>
+                    <div className='justify-end mt-auto max-w-[1000px]'>
                         <BottomPage questionDetails={currentQuestionDetails} onPreviousQuestion={handlePreviousQuestion} onNextQuestion={handleNextQuestion}></BottomPage>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default function TopSidebar({ text }: MarqueeProps) {
     const router = useRouter();
     function logoutSystem() {
         logout().finally(() => {
-            router.push("/login")
+            router.push("/")
         })
     }
     const [suser, setSUser] = useState<User | null>(null);
